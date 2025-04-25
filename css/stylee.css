@@ -1,0 +1,358 @@
+/* 基础样式 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+/* 特效容器 - 覆盖全屏且在所有内容之上 */
+#effects-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none; /* 允许点击穿透 */
+    z-index: 100; /* 高于背景但低于内容 */
+    overflow: hidden;
+}
+
+/* 鼠标轨迹粒子 */
+.mouse-particle {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 182, 193, 0.7);
+    filter: drop-shadow(0 0 3px #ff69b4);
+    z-index: 101;
+}
+
+/* 爱心雨 */
+.heart {
+    position: absolute;
+    color: #ff6b8b;
+    font-size: 20px;
+    z-index: 102;
+    animation: fall 8s linear infinite;
+}
+
+/* 雪花 */
+.snowflake {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.8);
+    font-size: 18px;
+    z-index: 103;
+    animation: fall 10s linear infinite;
+}
+
+/* 通用下落动画 */
+@keyframes fall {
+    to {
+        transform: translateY(100vh) rotate(360deg);
+    }
+}
+
+/* 分割线 */
+
+body {
+    overflow-x: hidden;
+    color: #333;
+}
+
+/* 全屏背景 */
+.fullscreen-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    will-change: transform; /* 优化动画性能 */
+}
+
+.fullscreen-bg  .bg-image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    will-change: transform;
+}
+
+/* 左侧个人信息 */
+/* 左侧个人信息 */
+/* 新增容器样式 */
+.personal-info-container {
+    position: fixed;
+    left: 5%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 280px;
+    height: auto;
+    z-index: 10;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+/* 个人信息栏背景图片 */
+.personal-info-bg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    
+    z-index: 1;
+    filter: brightness(0.9); 
+}
+
+.personal-info-bg  .info-bg-image{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    filter: brightness(0.9);
+}
+
+/* 修改原有个人信息栏样式 */
+.personal-info {
+    position: relative; /* 改为相对定位 */
+    width: 100%;
+    padding: 25px;
+    background-color: rgba(255, 255, 255, 0); /* 调整透明度 */
+    border-radius: 12px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.942);
+    backdrop-filter: blur(1px); /* 减小模糊度 */
+    z-index: 2;
+    border: 1px solid rgba(130, 130, 130, 0.045);
+}
+
+/* 调整文字颜色确保在背景图上可读 */
+/* 主标题颜色 */
+.personal-info h1 {
+     /* 渐变效果（高级） */
+   /* background: linear-gradient(to right, #ff758c, #ff7eb3); */
+   /* -webkit-background-clip: text; */
+   /* -webkit-text-fill-color: transparent; */
+    color: #e2c080 !important ; 
+    text-shadow: 0 2px 4px rgb(0, 0, 0);
+}
+
+/* 副标题颜色 */
+.personal-info .subtitle {
+    color: #e2c080; 
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.281);
+}
+
+/* 信息内容颜色 */
+.personal-info .info-content {
+    color: #e2c080; 
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.298);
+}
+
+/* 信息标签颜色 */
+.personal-info .info-label {
+    color: #e2c080; 
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.288);
+}
+
+/* 版权信息颜色 */
+.personal-info .copyright {
+    color: #000000; 
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.291);
+}
+
+/* 头像 */
+.avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto 15px;
+    border: 2px solid rgba(255, 105, 180, 0.3);
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.384);
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.personal-info h1 {
+    text-align: center;
+    margin-bottom: 5px;
+    color: #ff69b4;
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.subtitle {
+    text-align: center;
+    color: #888;
+    margin-bottom: 20px;
+    font-size: 14px;
+}
+
+.info-section {
+    margin-top: 20px;
+}
+
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 12px;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed #eee;
+}
+
+.info-item:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.info-label {
+    color: #666;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.info-content {
+    color: #333;
+    font-size: 13px;
+    text-align: right;
+    max-width: 60%;
+}
+
+.copyright {
+    margin-top: 20px;
+    text-align: center;
+    color: #999;
+    font-size: 11px;
+    padding-top: 15px;
+    border-top: 1px solid #f0f0f0;
+}
+/* 右侧功能窗口*/
+.function-window {
+    margin-left: 400px;
+    padding: 50px;
+    min-height: 100vh;
+    background-color: rgba(255, 255, 255, 0);
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0);
+}
+
+.section {
+    margin-bottom: 60px;
+}
+
+.section h2 {
+    font-size: 28px;
+    margin-bottom: 30px;
+    color: #ff69b4;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+.section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background-color: #ff69b4;
+}
+
+/* 时光轴样式 */
+.timeline-container {
+    position: relative;
+    padding-left: 30px;
+}
+
+.timeline-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 2px;
+    background-color: #ff69b4;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 40px;
+}
+
+.timeline-date {
+    position: absolute;
+    left: -30px;
+    top: 0;
+    transform: translateX(-100%);
+    padding-right: 15px;
+    color: #ff69b4;
+    font-weight: bold;
+}
+
+.timeline-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+}
+
+.timeline-content h3 {
+    margin-bottom: 10px;
+    color: #ff69b4;
+}
+
+.timeline-photos {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.timeline-photos img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s;
+}
+
+.timeline-photos img:hover {
+    transform: scale(1.05);
+}
+
+/* 响应式设计 */
+@media (max-width: 1200px) {
+    .personal-info {
+        width: 250px;
+        left: 3%;
+    }
+    
+    .function-window {
+        margin-left: 300px;
+        padding: 30px;
+    }
+}
+
+@media (max-width: 768px) {
+    .personal-info {
+        position: static;
+        width: 90%;
+        margin: 20px auto;
+        transform: none;
+    }
+    
+    .function-window {
+        margin-left: 0;
+        padding: 20px;
+    }
+} 
+
+

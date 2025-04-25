@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>H.M | Love</title>
+    <!-- 字体引入 -->
+    <link href="https://fonts.googleapis.com/css2?family=Parisienne&family=Cinzel:wght@400;700&family=Playfair+Display:ital@1&family=Noto+Serif+SC:wght@300;500&display=swap" rel="stylesheet">
+    <style>
+        /* 基础样式 */
+        :root {
+            --pink-light: #FFB6C1;
+            --pink-deep: #FF9A9E;
+            --pink-btn: #FF7EB9;
+            --gold: #F5DEB3;
+            --gold-dark: #D4AF37;
+            --blue-romantic: #A7C7E7;
+            --blue-deep: #89CFF0;
+            --white-pearl: #FAF9F6;
+        }
+        
+        /* 重置默认边距 */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow-x: hidden;
+        }
+        
+        /* 全屏背景图容器 */
+        .fullscreen-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            z-index: -2; /* 置于最底层 */
+        }
+        
+        /* 背景图片样式 */
+        .fullscreen-bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* 保证图片覆盖整个屏幕 */
+        }
+        
+        body {
+            font-family: 'Noto Serif SC', serif;
+            color: var(--white-pearl);
+            position: relative;
+            min-height: 100vh;
+        }
+        
+        .romantic-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 30% 70%, rgba(167,199,231,0.2) 0%, transparent 50%),
+                radial-gradient(circle at 70% 30%, rgba(255,182,193,0.15) 0%, transparent 50%);
+            z-index: -1;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            text-align: center;
+        }
+        
+        .main-title {
+            font-family: 'Parisienne', cursive;
+            font-size: 4.5rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(45deg, var(--pink-deep), var(--gold));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 5px rgba(255,154,158,0.5);
+            }
+            to {
+                text-shadow: 0 0 15px rgba(245,222,179,0.8);
+            }
+        }
+        
+        .subtitle {
+            font-family: 'Cinzel', serif;
+            color: var(--gold-dark);
+            font-size: 1.2rem;
+            margin-bottom: 3rem;
+            letter-spacing: 2px;
+        }
+        
+        .love-letter-title {
+            color: var(--blue-deep);
+            font-size: 1.3rem;
+            margin: 0.5rem 0;
+            display: block;
+        }
+        
+        .blue-text {
+            color: var(--blue-romantic);
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .love-letter {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin: 0 auto 3rem;
+            padding: 2rem;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+            border-radius: 15px;
+            border: 1px solid rgba(167,199,231,0.5);
+        }
+        
+        /* 修改处：完全移除链接下划线 */
+        .btn-link {
+            text-decoration: none !important;
+            display: inline-block;
+            outline: none;
+        }
+        
+        /* 按钮样式优化 */
+        .love-btn {
+            display: block;
+            width: fit-content;
+            margin: 2rem auto 0;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, var(--pink-deep), var(--pink-btn));
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none !important;
+            transform-style: preserve-3d;
+        }
+        
+        .love-btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 10px 20px rgba(255,126,185,0.4);
+        }
+        
+        .love-btn:active {
+            transform: translateY(-1px);
+        }
+        
+        .love-btn:focus {
+            outline: none;
+        }
+        
+        .heart-beat {
+            display: inline-block;
+            margin-left: 8px;
+            animation: heartbeat 1.5s infinite;
+        }
+        
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            25% { transform: scale(1.1); }
+            50% { transform: scale(1); }
+            75% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+        
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 3rem;
+            }
+            
+            .love-letter {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 全屏背景图 - 替换src为您自己的图片路径 -->
+    <div class="fullscreen-bg">
+        <img src="img/shou.jpg" alt="全屏背景">
+    </div>
+    
+    <div class="romantic-overlay"></div>
+    
+    <div class="container">
+        <!-- 主标题区 -->
+        <h1 class="main-title">H.M</h1>
+        <p class="subtitle">从2023年相遇的那一天起,我的世界便有了光..</p >
+        
+        <!-- 爱的告白 -->
+        <div class="love-letter">
+            <span class="love-letter-title">致我最爱的你</span>
+            <p class="blue-text">自相逢处惊起一汪春水，至今日数檐角星子，是风也吹不散的温柔~❤</p >
+        </div>
+        
+        <!-- 修改处：无下划线的链接按钮 -->
+        <a href=" index1.html " class="btn-link">
+            <button class="love-btn">
+                探索爱的时光轴
+                <span class="heart-beat">❤</span>
+            </button>
+        </a >
+    </div>
+</body>
+</html>

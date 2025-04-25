@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Y.R | b</title>
+    <!-- 使用完全免费的Google Fonts字体 -->
+    <link href="https://fonts.googleapis.com/css2?family=Ma+Shan+Zheng&family=ZCOOL+QingKe+HuangYou&family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+    <style>
+        /* 基础样式 */
+        body {
+            /* 中文字体优先使用免费字体，最后回退到系统字体 */
+            font-family: 'ZCOOL QingKe HuangYou', 'Ma Shan Zheng', 'ZCOOL XiaoWei', 'Arial', 'Microsoft YaHei', sans-serif;
+            background-color: #fff0f5;
+            background-image: url('img/shou.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 20px;
+            color: #5a3d5a;
+        }
+        
+        /* 标题使用更可爱的免费字体 */
+        h1 {
+            font-family: 'Ma Shan Zheng', cursive;
+            color:#d35d6e;/* 主标题颜色 */
+            text-align: left;
+            font-size: 28px;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(255, 182, 193, 0.5);
+        }
+        
+        /* 日记标题使用另一种免费字体 */
+        .entry-title {
+            font-family: 'ZCOOL XiaoWei', serif;
+            font-size: 20px;
+            color: #d35d6e;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 1px dashed #ffb6c1;
+        }
+        
+        /* 邮票文字使用手写风格免费字体 */
+        .stamp {
+            font-family: 'Ma Shan Zheng', cursive;
+            /* 其他样式保持不变 */
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            width: 60px;
+            height: 70px;
+            background-color:#ffffff;/* 邮票背影 */
+             /* #f8e1e4; */
+            border: 1px dashed #d35d6e;/* 邮票虚线边框颜色 */
+            /* 1px dashed #d35d6e; */
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #d35d6e;
+            font-size: 12px;
+            transform: rotate(10deg);
+        }
+        
+        /* 日期使用更优雅的免费字体 */
+        .entry-date {
+            font-family: 'ZCOOL XiaoWei', serif;
+            text-align: right;
+            margin-right: 20px;
+            font-style: italic;
+            color: #a87fa8;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        
+        /* 按钮文字也使用特殊字体 */
+        button {
+            font-family: 'ZCOOL QingKe HuangYou', sans-serif;
+            /* 其他按钮样式保持不变 */
+            background-color: #ffb6c1;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-left: 10px;
+            transition: background-color 0.3s ease;
+        }
+        
+        /* 其他原有样式保持不变 */
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        /* 修改颜色 */
+        .envelope {
+            /* border-color: var(---seconddary-color);修改颜色 */
+            background-color:rgba(255, 245, 245, 0.85) ;/* 信封背景颜色 */
+            /* rgba(255, 240, 245, 0.85); */
+            border: 2px solid #ffb6c1;/*信封外边框 */
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(255, 182, 193, 0.3);/*阴影效果*/
+            padding: 25px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .envelope:before {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 95%;
+            height: 20px;
+            background-color: #ffd1dc;/* 顶部条纹颜色 */
+            border-radius: 10px 10px 0 0;
+            opacity: 0.7;
+        }
+        
+        .entry-content {
+            line-height: 1.8;
+            font-size: 16px;
+            margin-bottom: 20px;
+            white-space: pre-wrap;
+            background-color: rgba(255, 255, 255, 0.7);/* 字的背景颜色 */
+            text-align: left;
+            padding-left: 30px;
+            padding-right: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #ffb6c1;
+        }
+        
+        .entry-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            border: 3px solid #ffb6c1;/*图片边框*/
+            display: block;
+            margin: 15px auto;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        
+        .heart {
+            color: #ff6b8b;
+            font-size: 20px;
+            margin: 0 5px;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #a87fa8;
+            font-size: 14px;
+        }
+        .footer a{
+            color: #a87fa8;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover{
+            color: #d35d6e;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>致世界上最~最~最温柔美丽的睿睿 <span class="heart">♥</span></h1>
+        
+        <div class="envelope">
+            <div class="stamp">
+                珍贵<br>回忆</div>
+            <div class="entry-title">今天的小确幸</div>
+            <div class="entry-content">
+今天和闺蜜一起去喝了那家新开的奶茶店，草莓波波茶超级好喝！
+我们还发现了一家隐藏的小饰品店，买了好多可爱的发夹。
+最开心的是，我们拍了好多照片，阳光下的我们笑得好灿烂～
+            </div>
+            <!-- <img src="/img/jing.jpg" alt="合照" class="entry-image"> -->
+            <div class="entry-date">2023年5月20日</div>
+        </div>
+        
+        
+        
+        <div class="footer">
+            <a href="index1.html">我们的友谊 
+                <span class="heart">♥</span>永远珍藏
+                <span class="heart">♥</span>
+            </a>
+            <style>
+                a{
+                    text-decoration: none;
+                }
+            </style>
+                
+        </div>
+    </div>
+</body>
+</html>

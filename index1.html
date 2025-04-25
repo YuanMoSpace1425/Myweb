@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Y.R | Love</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/stylee.css">
+    <link rel="stylesheet" href="css/function.css">
+    <!-- 粒子效果容器 -->
+
+</head>
+<body>
+     <!-- 全屏背景 - 直接在HTML中添加 -->
+     <div class="fullscreen-bg">
+        <img src="img/jing.jpg" alt="全屏背景" class="bg-image">
+    </div>
+
+    <!-- 特效容器（覆盖整个视口） -->
+    <div id="effects-container">
+        <div id="mouse-trail"></div> <!-- 鼠标轨迹 -->
+        <div id="hearts-rain"></div> <!-- 爱心雨 -->
+        <div id="snowfall"></div>    <!-- 雪花 -->
+    </div>
+    
+    <!-- 左侧个人信息容器 -->
+    <div class="personal-info-container">
+        <!-- 个人信息栏背景图片 - 直接在HTML中添加 -->
+        <!-- <div class="personal-info-bg">
+            <img src="/img/touxiang.jpg" alt="信息栏背景" class="info-bg-image">
+        </div> -->
+        
+        <!-- 个人信息内容 -->
+        <div class="personal-info">
+            
+            <div class="avatar">
+                <img src="img/touxiang.jpg" alt="个人照片">
+            </div>
+            <h1>元元宝宝</h1>
+            <p class="subtitle">平安喜乐，万事顺遂</p >
+            
+            <div class="info-section">
+                <div class="info-item">
+                    <span class="info-label">毕业院校</span>
+                    <span class="info-content">洛阳师范学院</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">星座</span>
+                    <span class="info-content">双鱼♓&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;天蝎♏</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">QQ：元元</span>
+                    <span class="info-content">2685206790</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">电子邮件</span>
+                    <span class="info-content">2685206790@qq.com</span>
+                </div>
+                <div class="info-item">
+                    <span class="info-label">爱好</span>
+                    <span class="info-content">吃零食、睡大觉、</span>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>本网站部分图片、文字等素材来源于网络，仅供学习交流使用。若涉及版权问题，请联系我们:2685206790@qq.com</p >
+                    <p>所有原创内容版权归本网站所有，转载请注明出处。</p >
+            </div>
+        </div>
+    </div>
+
+    
+    <!-- 右侧功能窗口 -->
+    <!-- 右侧功能窗口 -->
+    <!-- 右侧功能窗口 -->
+    <div class="function-window">
+        <!-- 时光轴模块 -->
+        <section class="module" id="timeline">
+            <h2><span class="icon">
+                <a href="index_w.html">📅</a>
+                <style>
+                    a{
+                        text-decoration: none;
+                    }
+                </style></span> 我们的回忆</h2>
+            <div class="timeline-container">
+                <div class="event" data-date="2023.09.29" data-event-type="meet">
+                    <div class="event-marker"></div>
+                    <div class="event-content">
+
+                        <h3>2023.09.29~30我们成为好友</h3>
+                        <p>我们的故事，始于“对方已通过好友申请...”</p >
+
+                    </div>
+                </div>
+                <!-- 更多事件... -->
+                <div class="event" data-date="2024.08.24" data-event-type="couple">
+                    <div class="event-marker"></div>
+                    <div class="event-content">
+                        
+                        <h3>2024.08.24确认关系</h3>
+                        <p>隔着屏幕确认关系的那天，像为我们的故事敲下了美好的序章...</p >
+                        
+                    </div>
+                </div>
+                <!-- 更多事件... -->
+                <div class="event" data-date="2026.08.24" data-event-type="travel">
+                    <div class="event-marker"></div>
+                    <div class="event-content">
+                        
+                        <h3>2026.08.24拉钩o(*￣▽￣*)ブ</h3>
+                        <p>约1314公里的距离，一步之遥的呼吸...</p >
+                        
+                    </div>
+                </div>
+                
+                
+            </div>
+        </section>
+        
+
+        <!-- 生活足迹模块 -->
+        <section class="module" id="footprints">
+            <h2><span class="icon">
+                <a href="index_s.html">📚</a>
+                <style>
+                    a{
+                        text-decoration: none;
+                    }
+                </style></span> 生活小记</h2>
+            <div class="photo-grid">
+                <!-- 示例图片（缩略图+大图地址） -->
+                <img 
+                    src="img/touxiang.jpg" 
+                    data-fullsize="large.jpg" 
+                    class="preview-image" 
+                    alt="我们的旅行照片"
+                    
+                >
+                
+                <!-- 更多图片... -->
+            </div>
+            
+            <!-- 灯箱容器 -->
+            <div id="lightbox" class="lightbox">
+                <span class="close-btn">&times;</span>
+                
+                <div class="lightbox-container">
+                    <img src="img/touxiang.jpg">
+                </div>
+            </div>
+        </section>
+
+        <!-- 愿望清单模块 -->
+        <section class="module" id="wishlist">
+            <h2><span class="icon">
+                <a href="index_y.html">✨</a>
+                <style>
+                    a{
+                        text-decoration: none;
+                    }
+                </style>
+            </span> 愿望清单</h2>
+            <ul class="wish-list">
+                <li data-done="true">想要宝宝抱抱╥﹏╥...</li>
+                
+                
+                <!-- 更多愿望... -->
+            </ul>
+            <ul class="wish-list">
+                <li data-done="true">想牵宝宝的手手😍</li>
+                
+                
+                <!-- 更多愿望... -->
+            </ul>
+        </section>
+
+        <!-- 无情分割线 -->
+
+        <!-- <div class="function-window"> -->
+            <!-- 控制大小了 -->
+            
+
+            
+            <!-- 时光轴（带信封图标） -->
+            <section class="module" id="timeline">
+                <h2><i class="icon">
+                    <a href="index_x.html">🌠</a>
+                <style>
+                    a{
+                        text-decoration: none;
+                    }
+                </style></i> 时光轴</h2>
+                <div class="timeline-event">    
+                
+                    <span class="date">2023.09.29~30</span>
+                    <span class="event">第一次相遇~≦</span>   
+                    <a href="index_a.html" class="btn-link">
+                        <button class="love-btn">
+                            <span class="heart-beat">🐟</span>
+                            
+                        </button>
+                    </a > 
+
+
+                </div>
+                <!-- 更多事件... -->
+                <br>
+                <div class="timeline-event">    
+                
+                    <span class="date">2024.08.24</span>
+                    <span class="event">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;宝宝~<。)#)))≦</span>   
+                    <a href="index_b.html" class="btn-link">
+                        <button class="love-btn">
+                           <span class="heart-beat">&nbsp;❀&nbsp;</span>
+                        </button>
+                    </a > 
+
+                    
+                </div>
+                <!-- 更多事件... -->
+                <br>
+                <div class="timeline-event">    
+                
+                    <span class="date">2026.08.24</span>
+                    <span class="event">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;奔现啦~♪≦</span>   
+                    <a href="index_c.html" class="btn-link">
+                        <button class="love-btn">
+                           <span class="heart-beat">👣</span>
+                        </button>
+                    </a > 
+
+                    
+                </div>
+                <!-- 更多事件... -->
+                
+            </section>
+        
+            <!-- 旅行足迹 -->
+            <section class="module" id="travel">
+                <h2><i class="icon">
+                    <a href="index_l.html">🚲</a>
+                <style>
+                    a{
+                        text-decoration: none;
+                    }
+                </style></i> 去旅行</h2>
+                <div class="travel-plan editable">
+                    <div class="plan-item">
+                        <span class="time">上午</span>
+                        <span class="action">光之国</span>
+                        <button class="edit-btn">编辑</button>
+                    </div>
+                    <!-- 更多计划项... -->
+                    <div class="plan-item">
+                        <span class="time">下午</span>
+                        <span class="action">怪兽墓场</span>
+                        <button class="edit-btn">编辑</button>
+                    </div>
+                    <!-- 更多计划项... -->
+                    <div class="plan-item">
+                        <span class="time">上午</span>
+                        <span class="action">没想到吧嗯~ o(*￣▽￣*)o</span>
+                        <button class="edit-btn">编辑</button>
+                    </div>
+                    <!-- 更多计划项... -->
+                    <div class="plan-item">
+                        <span class="time">下午</span>
+                        <span class="action">不知道写啥了</span>
+                        <button class="edit-btn">编辑</button>
+                    </div>
+                    <!-- 更多计划项... -->
+                    <div class="plan-item">
+                        <span class="time">上午</span>
+                        <span class="action">就等你呢 ~</span>
+                        <button class="edit-btn">编辑</button>
+                    </div>
+                    <!-- 更多计划项... -->
+                    <div class="plan-item">
+                        <span class="time">下午</span>
+                        <span class="action">赶紧想想吧(ง •_•)ง</span>
+                        <button class="edit-btn">编辑</button>
+                    </div>
+                    <!-- 更多计划项... -->
+                    
+                </div>
+            </section>
+        
+            <!-- 留言板 -->
+            <section class="module" id="comments">
+                <h2><i class="icon">
+                    <a href="index_h.html">💬</a>
+                <style>
+                    a{
+                        text-decoration: none;
+                    }
+                </style></i> 欢迎留言</h2>
+                <div class="comment-list">
+                    <div class="comment">
+                        <span class="user">游客123：</span>
+                        <span class="text">祝福你们！</span>
+                    </div>
+                </div>
+                <textarea class="comment-input" placeholder="留下你的祝福..."></textarea>
+                <button class="submit-btn">发布</button>
+            </section>
+        
+            
+        <!-- </div> -->
+    </div>
+
+    <script src="javascript/function.js"></script>
+
+    <script src="javascript/scriptt.js"></script>
+</body>
+</html>

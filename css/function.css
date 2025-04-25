@@ -1,0 +1,355 @@
+/* 基础布局 */
+
+
+.function-window {
+    width: 65%;
+    margin-left: 35%;
+    padding: 40px;
+    min-height: 100vh;
+    position: relative;
+    /* z-index: 50;   雪花在背景层*/
+    background: rgba(255, 251, 253, 0);
+    backdrop-filter:blur(1px);
+}
+
+/* 模块通用样式 */
+.module {
+    background: rgba(255, 255, 255, 0.229);
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 40px;
+    box-shadow: 0 5px 15px rgba(255, 105, 180, 0);
+    /* opacity: 0.82; */
+}
+
+.module h2 {
+    color: #ff6b8bc8;
+    border-bottom: 2px dashed #ffe5ec;
+    padding-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* 计算时间 */
+.days-counter {
+    display: block;
+    margin: 3px 0 10px;
+    font-size: 14px;
+    color: #ff6b8b;
+    opacity: 0.9;
+}s
+
+[data-event-type="meet"] .days-counter {
+    color: #ff9eb5; /* 相识用浅粉色 */
+}
+
+[data-event-type="marry"] .days-counter {
+    color: #ff6b8b; /* 结婚用标准粉色 */
+    font-weight: bold;
+}
+
+
+/* 时光轴容器 */
+#timeline .event-content {
+    background: rgba(255, 255, 255, 0.7); /* 背景70%透明 */
+}
+
+/* 日期文字 */
+#timeline .event-content h3 {
+    color: rgba(0, 0, 0, 0.6); /* 标题60%透明 */
+}
+
+/* 描述文字 */
+#timeline .event-content p {
+    color: rgba(85, 85, 85, 0.863); /* 正文50%透明 */
+    transition: color 0.2s; /* 添加过渡效果 */
+}
+
+/* 天数标记 */
+.days-badge {
+    color: rgb(255, 107, 139); /* 粉色70%透明 */
+}
+
+#timeline .event:hover .event-content p {
+    color: rgb(255, 107, 139); /* 悬停时加深 */
+}
+
+
+/* 时光轴特效 */
+
+.days-counter {
+    display: inline-block;
+    margin-left: 10px;
+    font-size: 14px;
+    color: #ff6b8b;
+    font-weight: normal;
+}
+
+/* 时光轴原本 */
+.timeline-container {
+    position: relative;
+    padding-left: 30px;
+}
+
+.timeline-container::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 2px;
+    background: linear-gradient(to bottom, #ff6b8b, #ffccd5);
+} 
+
+.event {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.event-marker {
+    position: absolute;
+    left: -27px;
+    top: 5px;
+    width: 14px;
+    height: 14px;
+    background: #ff6b8b;
+    border-radius: 50%;
+    border: 3px solid rgba(255, 255, 255, 0);
+    box-shadow: 0 0 0 2px #ff8fab;
+} 
+
+/* 照片网格 */
+.photo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: 10px;
+    background: #eeeeee00;
+/* opacity: 0.2; */
+}
+
+.photo-grid img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    transition: transform 0.3s;
+    cursor: pointer;
+} 
+
+/* 灯箱基础样式 */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.9);
+    z-index: 9999;
+    display: none;
+    overflow: auto;
+}
+
+.lightbox-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100%;
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+.lightbox-image {
+    max-width: 90vw;
+    max-height: 90vh;
+    object-fit: contain;
+    border: 2px solid rgba(255,255,255,0.1);
+    box-shadow: 0 0 30px rgba(0,0,0,0.6);
+    animation: fadeIn 0.3s;
+}
+
+.close-btn {
+    position: fixed;
+    top: 25px;
+    right: 25px;
+    color: white;
+    font-size: 35px;
+    cursor: pointer;
+    z-index: 10000;
+    transition: 0.3s;
+}
+
+.close-btn:hover {
+    color: #ff6b8b;
+}
+
+/* 愿望清单*/ 
+/* 愿望清单基础样式 */
+.wish-list {
+    list-style: none;
+    padding-left: 0;
+}
+
+.wish-list li {
+    padding: 10px;
+    margin-bottom: 8px;
+    background: rgba(255, 228, 235, 0.3);
+    border-left: 3px solid #ffccd57f;
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+}
+
+/* 完成状态样式 */
+.wish-list li[data-done="true"] {
+    text-decoration: line-through;
+    color: #888;
+    background: rgba(255, 228, 235, 0.086);
+}
+
+.wish-list li[data-done="true"]::after {
+    content: "✓";
+    color: #ff6b8b;
+    position: absolute;
+    right: 15px;
+}
+/* .wish-items li {
+    padding: 8px 15px;
+    margin-bottom: 8px;
+    background: #fcf8f931;
+    border-left: 3px solid #ffccd5;
+    position: relative;
+}
+
+.wish-items li[data-done="true"] {
+    color: #888888;
+    text-decoration: line-through;
+}
+
+.wish-items li[data-done="true"]::after {
+    content: '✓';
+    color: #ff6b8b;
+    position: absolute;
+    right: 10px;
+}  */
+
+/* === 信封图标 === */
+.envelope-link {
+    margin-left: 8px;
+    opacity: 0.7;
+    transition: all 0.3s;
+    text-decoration: none;
+}
+.envelope-link:hover {
+    opacity: 1;
+    transform: translateY(-2px);
+}
+
+/* === 旅行计划 === */
+.travel-plan {
+    border-left: 3px solid #ffccd5;
+    padding-left: 15px;
+}
+.plan-item {
+    padding: 10px;
+    margin-bottom: 10px;
+    background: rgba(255, 228, 235, 0.123);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+}
+.time {
+    color: #ff6b8b;
+    min-width: 60px;
+    font-weight: bold;
+}
+.edit-btn {
+    margin-left: auto;
+    background: none;
+    border: 1px solid #ff6b8b72;
+    color: #ff6b8b63;
+    border-radius: 4px;
+    padding: 2px 8px;
+    cursor: pointer;
+}
+
+/* === 留言板 === */
+.comment-list {
+    max-height: 300px;
+    overflow-y: auto;
+    margin-bottom: 15px;
+}
+.comment {
+    padding: 8px;
+    border-bottom: 1px dashed #eee;
+}
+.user {
+    color: #ff6b8b;
+    font-weight: bold;
+}
+.comment-input {
+    width: 100%;
+    height: 80px;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ffccd5;
+    border-radius: 8px;
+}
+.submit-btn {
+    background: #ff6b8bbb;
+    color: white;
+    border: none;
+    padding: 8px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+
+
+
+.days-counter {
+    animation: fadeIn 0.5s ease;
+}
+
+
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@media (max-width: 768px) {
+    #timeline .event-content p {
+        color: rgba(85, 85, 85, 0.7); /* 移动端适当加深 */
+    }
+}
+
+@media (max-width: 480px) {
+    .days-counter {
+        font-size: 12px;
+    }
+}
+
+/* 移动端适配 */
+@media (max-width: 768px) {
+    .lightbox-content {
+        max-width: 100vw;
+        max-height: calc(100vh - 40px); /* 留出关闭按钮空间 */
+        padding: 20px 0;
+    }
+}
+
+/* 超长图片特殊处理 */
+@media (max-aspect-ratio: 3/4) {
+    .lightbox-content {
+        max-height: 80vh;
+        width: auto !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .envelope-popup {
+        width: 250px;
+        height: 180px;
+    }
+}

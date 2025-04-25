@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R.Y | x</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #f5f5f5;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        .wish-form {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        .wish-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        .wish-card {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        .wish-card.completed {
+            background-color: #f0fff0;
+            border-left: 4px solid #2ecc71;
+        }
+        .wish-card h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        .wish-meta {
+            font-size: 0.9em;
+            color: #7f8c8d;
+            margin-bottom: 10px;
+        }
+        .wish-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .complete-btn {
+            background-color: #2ecc71;
+        }
+        .delete-btn {
+            background-color: #e74c3c;
+        }
+        .add-collaborator {
+            margin-top: 10px;
+            display: flex;
+            gap: 5px;
+        }
+        .collaborators {
+            margin-top: 10px;
+            font-size: 0.8em;
+            color: #3498db;
+        }
+        .current-user {
+            margin-bottom: 20px;
+            text-align: right;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+    <h1>易逝流年</h1>
+    
+    <div class="current-user">
+        当前用户: <span id="currentUser">未登录</span>
+        <button onclick="changeUser()">切换用户</button>
+    </div>
+    
+    <div class="wish-form">
+        <h2>我的感触</h2>
+        <div class="input-group">
+            <label for="wishText">请执笔</label>
+            <textarea id="wishText" rows="3" required></textarea>
+        </div>
+        <button onclick="addWish()">发布</button>
+    </div>
+    
+    <div class="wish-list" id="wishList">
+        <!-- 愿望列表将在这里动态生成 -->
+    </div>
+
+    <script>
+        // 当前用户（简易实现，实际项目应该用登录系统）
+        let currentUser = localStorage.getItem('currentUser') || '用户' + Math.floor(Math.random() * 1000);
+        document.getElementById('currentUser').textContent = currentUser;
+        
+        // 切换用户（模拟登录）
+        function changeUser() {
+            const newUser = prompt('输入你的用户名:', currentUser);
+            if (newUser) {
+                currentUser = newUser;
+                localStorage.setItem('currentUser', currentUser);
+                document.getElementById('currentUser').textContent = currentUser;
+                renderWishes();
+            }
+        }
+        
+        // 从localStorage加载愿望列表
+        function loadWishes() {
+            const saved = localStorage.getItem('wishes');
+            return saved ? JSON.parse(saved) : [];
+        }
+        
+        // 保存愿望列表到localStorage
+        function saveWishes(wishes) {
+            localStorage.setItem('wishes', JSON.stringify(wishes));
+        }
+        
+        // 添加新愿望
+        function addWish() {
+            const text = document.getElementById('wishText').value.trim();
+            if (!text) return;
+            
+            const wishes = loadWishes();
+            wishes.push({
+                id: Date.now(),
+                text,
+                creator: currentUser,
+                completed: false,
+                completer: null,
+                collaborators: []
+            });
+            
+            saveWishes(wishes);
+            document.getElementById('wishText').value = '';
+            renderWishes();
+        }
+        
+        // 标记愿望完成/未完成
+        function toggleComplete(wishId) {
+            const wishes = loadWishes();
+            const wish = wishes.find(w => w.id === wishId);
+            
+            if (wish && (wish.creator === currentUser || wish.collaborators.includes(currentUser))) {
+                wish.completed = !wish.completed;
+                wish.completer = wish.completed ? currentUser : null;
+                saveWishes(wishes);
+                renderWishes();
+            }
+        }
+        
+        // 删除愿望
+        function deleteWish(wishId) {
+            const wishes = loadWishes();
+            const index = wishes.findIndex(w => w.id === wishId);
+            
+            if (index !== -1 && wishes[index].creator === currentUser) {
+                wishes.splice(index, 1);
+                saveWishes(wishes);
+                renderWishes();
+            }
+        }
+        
+        // 添加协作者
+        function addCollaborator(wishId) {
+            const collaborator = prompt('输入协作者用户名:');
+            if (!collaborator) return;
+            
+            const wishes = loadWishes();
+            const wish = wishes.find(w => w.id === wishId);
+            
+            if (wish && wish.creator === currentUser && !wish.collaborators.includes(collaborator)) {
+                wish.collaborators.push(collaborator);
+                saveWishes(wishes);
+                renderWishes();
+            }
+        }
+        
+        // 渲染愿望列表
+        function renderWishes() {
+            const wishes = loadWishes();
+            const wishList = document.getElementById('wishList');
+            wishList.innerHTML = '';
+            
+            wishes.forEach(wish => {
+                const canEdit = wish.creator === currentUser || wish.collaborators.includes(currentUser);
+                
+                const card = document.createElement('div');
+                card.className = `wish-card ${wish.completed ? 'completed' : ''}`;
+                card.innerHTML = `
+                    <h3>${wish.text}</h3>
+                    <div class="wish-meta">
+                        创建者: ${wish.creator}<br>
+                        ${wish.completed ? `✅ 由 ${wish.completer} 完成` : '未完成'}
+                    </div>
+                    ${wish.collaborators.length > 0 ? 
+                        `<div class="collaborators">协作者: ${wish.collaborators.join(', ')}</div>` : ''}
+                    
+                    ${canEdit ? `
+                        <div class="wish-actions">
+                            <button class="complete-btn" onclick="toggleComplete(${wish.id})">
+                                ${wish.completed ? '标记未完成' : '标记完成'}
+                            </button>
+                            ${wish.creator === currentUser ? `
+                                <button class="delete-btn" onclick="deleteWish(${wish.id})">删除</button>
+                            ` : ''}
+                        </div>
+                    ` : ''}
+                    
+                    ${wish.creator === currentUser ? `
+                        <div class="add-collaborator">
+                            <input type="text" id="collab-${wish.id}" placeholder="协作者用户名">
+                            <button onclick="addCollaborator(${wish.id})">添加协作者</button>
+                        </div>
+                    ` : ''}
+                `;
+                
+                wishList.appendChild(card);
+            });
+        }
+        
+        // 初始化页面
+        renderWishes();
+    </script>
+</body>
+</html>
