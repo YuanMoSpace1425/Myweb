@@ -7,10 +7,10 @@
     padding: 40px;
     min-height: 100vh;
     position: relative;
-    /* z-index: 50;   雪花在背景层*/
+    z-index: 50;   /*雪花在背景层*/
     background: rgba(255, 251, 253, 0);
     backdrop-filter:blur(1px);
-}
+}+
 
 /* 模块通用样式 */
 .module {
