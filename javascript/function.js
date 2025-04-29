@@ -34,6 +34,11 @@ function getDayText(type, days) {
             if (days < 0) return `💞距离确认关系还有 ${Math.abs(days)} 天`;
             return `💞确认关系 ${days} 天`;
         },
+        //建设模板
+        create: (days) => {
+            if (days < 0) return `🏠距离建成还有 ${Math.abs(days)} 天`;
+            return `🏠已入住 ${days} 天`;
+        },
         // 结婚模板
         marry: (days) => {
             if (days < 0) return `💐距离结婚还有 ${Math.abs(days)} 天`;
